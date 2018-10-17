@@ -695,7 +695,7 @@ static uint32_t glucose_meas_send(ble_gls_t * p_gls, ble_gls_rec_t * p_rec)
         }
     }
 
-    if ((p_rec->meas.flags & BLE_GLS_MEAS_FLAG_CONTEXT_INFO) & (p_gls->is_context_supported))
+    if (((p_rec->meas.flags & BLE_GLS_MEAS_FLAG_CONTEXT_INFO) > 0) && (p_gls->is_context_supported))
     {
         len     = gls_meas_context_encode(p_rec, encoded_glm);
         hvx_len = len;
